@@ -65,10 +65,48 @@ class LinkedList {
     }
 
     // Get at index
+    getAt(index) {
+        let current = this.head;
+        let count = 0;
+        while(current) {
+            if(count == index) {
+                console.log(current.data)
+            }
+            count++;
+            current = current.next;
+        }
+        return null;
+    }
 
     // Remove at index
 
+    removeAt(index) {
+        let current = this.head;
+        if(index > this.size) {            
+            console.log('Invalid Argument')
+            return -1;
+        }
+        else if( index === 0) {
+            this.head = current.next
+        }
+        else {
+            let previous = null;
+            for(let i = 0; i < index; i++) {
+                previous = current;
+                current = current.next;
+            }
+            previous.next = current.next;
+            this.size--;
+        }
+         
+    }
+
     // clear list
+
+    clearList() {
+        this.head = null;
+        this.size = 0;
+    }
 
     // print list
     printListData() {
@@ -88,4 +126,6 @@ ll.insertFirst(200)
 ll.insertFirst(100)
 ll.insertLast(400)
 ll.insertAt(500,4)
+ll.clearList();
 ll.printListData();
+// ll.getAt(2)
